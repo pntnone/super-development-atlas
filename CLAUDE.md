@@ -20,6 +20,8 @@ plugins/atlas/templates/  ← Templates for contracts, rules, CLAUDE.md files
 | `/atlas lab merge` | Claude-assisted merge back to parent |
 | `/atlas lab sync` | Sync contracts from parent to lab |
 | `/atlas lab list` | List all active labs |
+| `/atlas lab preview setup` | Initialize shared UI preview harness |
+| `/atlas lab preview` | Mount and preview a lab's UI in isolation |
 | `/atlas contract` | Manage contracts |
 | `/atlas rules` | Manage coding rules |
 
@@ -29,6 +31,7 @@ plugins/atlas/templates/  ← Templates for contracts, rules, CLAUDE.md files
 - **Feature Lab** — Isolated directory at `{project}-labs/{lab-name}/` containing only relevant contracts
 - **Contract** — Language-agnostic interface definition that specifies integration boundaries
 - **Labs Repo** — Sibling git repo `{project-name}-labs/` that holds all feature labs
+- **Preview Harness** — Shared app shell at `{labs-repo}/.atlas-harness/` that mounts any lab's UI for isolated testing without code duplication
 
 ## Conventions
 

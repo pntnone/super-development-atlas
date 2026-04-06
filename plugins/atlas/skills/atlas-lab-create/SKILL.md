@@ -102,6 +102,7 @@ Want to split now, or proceed as a single lab?"
    │   ├── origin.json
    │   └── requirements.md
    ├── contracts/
+   ├── preview.config.json      ← UI preview configuration
    └── src/
        ├── business/
        │   ├── models/
@@ -205,7 +206,38 @@ Generate the lab's CLAUDE.md using the `claude-lab.md` template. Fill in:
 **CRITICAL:** The CLAUDE.md must include the scope restriction:
 > "You are working ONLY on the '{lab-name}' feature. Do NOT read, reference, or modify any code outside this directory."
 
-## Step 11: Register Lab
+## Step 11: Generate Preview Config
+
+If the preview harness exists (`.atlas-harness/` in the labs repo), generate `preview.config.json` in the lab root:
+
+```json
+{
+  "version": "1.0.0",
+  "preview": {
+    "labName": "{lab-name}",
+    "mountPoint": "screen",
+    "entryComponent": "",
+    "entryPath": "src/ui/containers/"
+  },
+  "routes": [],
+  "dependencies": {
+    "contracts": ["{contract-1}", "{contract-2}"],
+    "mockOverrides": {}
+  },
+  "assets": {
+    "include": [],
+    "static": []
+  }
+}
+```
+
+The `entryComponent` and `entryPath` are left empty — they will be populated when the developer creates the entry UI component, or when `/atlas lab preview {lab-name}` is run.
+
+The `dependencies.contracts` list is pre-filled from the lab's contract list so the harness knows which mocks to inject.
+
+If the preview harness does NOT exist, skip this step silently.
+
+## Step 12: Register Lab
 
 Update `.atlas/registry.json` in the main pipeline:
 ```json
@@ -223,7 +255,7 @@ Update `.atlas/registry.json` in the main pipeline:
 }
 ```
 
-## Step 12: Summary
+## Step 13: Summary
 
 Display:
 ```
@@ -237,6 +269,11 @@ Next steps:
 1. Open Claude in the lab: cd {lab-path} && claude
 2. Start developing — Claude will only see this feature's context
 3. When done: /atlas lab merge {lab-name}
+```
+
+If preview harness exists:
+```
+Preview: /atlas lab preview {lab-name} (after creating UI components)
 ```
 
 If complexity analysis suggested splitting:
@@ -265,5 +302,6 @@ After lab creation, verify:
 - [ ] `contracts/` contains copies of all required contracts
 - [ ] `src/` has the mandatory business/ui/data/tests structure
 - [ ] Main pipeline `.atlas/registry.json` is updated with new lab entry
+- [ ] `preview.config.json` exists with correct contract dependencies (if harness exists)
 - [ ] Lab name doesn't conflict with existing labs
 </Validation>

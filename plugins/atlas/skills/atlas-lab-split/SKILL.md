@@ -104,6 +104,7 @@ For each sub-lab, create within the parent lab's `labs/` directory:
     │   │   ├── origin.json    ← Points to parent lab
     │   │   └── requirements.md
     │   ├── contracts/     ← Relevant contracts only
+    │   ├── preview.config.json  ← UI preview configuration
     │   └── src/
     │       ├── business/
     │       ├── ui/
@@ -164,7 +165,33 @@ Each sub-lab's CLAUDE.md:
 - References the parent lab's internal contracts where applicable
 - Does NOT mention sibling sub-labs' implementation details
 
-### 5e: Copy Relevant Contracts
+### 5e: Generate Preview Config
+If the preview harness exists (`.atlas-harness/` in the labs repo), generate `preview.config.json` in each sub-lab root:
+
+```json
+{
+  "version": "1.0.0",
+  "preview": {
+    "labName": "{sub-lab-name}",
+    "mountPoint": "screen",
+    "entryComponent": "",
+    "entryPath": "src/ui/containers/"
+  },
+  "routes": [],
+  "dependencies": {
+    "contracts": ["{relevant-contracts-for-this-sub-lab}"],
+    "mockOverrides": {}
+  },
+  "assets": {
+    "include": [],
+    "static": []
+  }
+}
+```
+
+The `entryComponent` and `entryPath` are left empty until the developer creates UI components. The `dependencies.contracts` list includes only contracts relevant to THIS sub-lab (both main pipeline contracts and internal contracts it consumes). Skip silently if the preview harness does not exist.
+
+### 5f: Copy Relevant Contracts
 Only copy contracts that this specific sub-lab needs:
 - Main pipeline contracts it must satisfy
 - Internal contracts it must implement or consume
@@ -227,6 +254,9 @@ Development order:
 
 To work on a sub-lab:
   cd {sub-lab-path} && claude
+
+To preview a sub-lab's UI:
+  /atlas lab preview {sub-lab-name}
 ```
 
 </Steps>
@@ -248,6 +278,7 @@ After split completes, verify:
 - [ ] Parent lab's manifest lists all sub-labs
 - [ ] Parent lab's CLAUDE.md reflects orchestrator role
 - [ ] Main pipeline registry is updated with all sub-lab entries
+- [ ] Each sub-lab has `preview.config.json` with correct contract dependencies (if harness exists)
 - [ ] No circular dependencies between sub-labs
 - [ ] Nesting depth doesn't exceed configured max
 </Validation>

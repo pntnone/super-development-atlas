@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "harness": {
+    "createdAt": "{{CREATED_AT}}",
+    "techStack": "{{TECH_STACK}}",
+    "platform": "{{PLATFORM}}"
+  },
+  "shell": {
+    "entryPoint": "{{ENTRY_POINT}}",
+    "framework": "{{FRAMEWORK}}",
+    "language": "{{LANGUAGE}}"
+  },
+  "providers": {
+    "theme": "{{THEME_SOURCE}}",
+    "navigation": "{{NAVIGATION_TYPE}}",
+    "state": "{{STATE_MANAGEMENT}}"
+  },
+  "mocks": {
+    "autoGenerate": true,
+    "directory": ".atlas-harness/mocks",
+    "contractBased": true
+  },
+  "scripts": {
+    "preview": "{{PREVIEW_COMMAND}}",
+    "build": "{{BUILD_COMMAND}}",
+    "test": "{{TEST_COMMAND}}"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "preview": {
+    "labName": "{{LAB_NAME}}",
+    "mountPoint": "{{MOUNT_POINT}}",
+    "entryComponent": "{{ENTRY_COMPONENT}}",
+    "entryPath": "{{ENTRY_PATH}}"
+  },
+  "routes": [],
+  "dependencies": {
+    "contracts": [],
+    "mockOverrides": {}
+  },
+  "assets": {
+    "include": [],
+    "static": []
+  }
+}
