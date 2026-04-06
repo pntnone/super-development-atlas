@@ -1,0 +1,15 @@
+{
+  "name": "super-development-atlas",
+  "description": "Atlas divide & conquer development framework — solve context bloat by isolating features into labs with well-defined contracts",
+  "owner": {
+    "name": "pntnone",
+    "email": "pntnone@users.noreply.github.com"
+  },
+  "plugins": [
+    {
+      "name": "atlas",
+      "source": ".",
+      "description": "Divide & conquer development framework with isolated feature labs, contracts, and coding rules for managing large codebases."
+    }
+  ]
+}
