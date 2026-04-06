@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "lab": {
+    "name": "{{LAB_NAME}}",
+    "description": "{{LAB_DESCRIPTION}}",
+    "createdAt": "{{CREATED_AT}}",
+    "status": "active"
+  },
+  "parent": {
+    "type": "{{PARENT_TYPE}}",
+    "name": "{{PARENT_NAME}}",
+    "path": "{{PARENT_PATH}}"
+  },
+  "contracts": {
+    "mustSatisfy": [],
+    "exposes": []
+  },
+  "requirements": {
+    "functional": [],
+    "nonFunctional": []
+  },
+  "subLabs": [],
+  "developers": []
+}

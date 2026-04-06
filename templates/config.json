@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "{{PROJECT_NAME}}",
+    "path": "{{PROJECT_PATH}}",
+    "labsPath": "{{LABS_PATH}}"
+  },
+  "rules": {
+    "universal": true,
+    "custom": ".atlas/rules/custom.md",
+    "suggested": ".atlas/rules/suggested.md"
+  },
+  "labs": {
+    "maxDepth": 2,
+    "warnAtDepth": 3
+  },
+  "contracts": {
+    "directory": ".atlas/contracts",
+    "registry": ".atlas/contracts/_index.json"
+  },
+  "merge": {
+    "requireContractValidation": true,
+    "requireCodeReview": true,
+    "requireTests": true
+  }
+}
