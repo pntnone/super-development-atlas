@@ -37,7 +37,7 @@ Your Project (Main Pipeline)          Feature Labs (Isolated)
 
 ```bash
 # Add Atlas as a plugin marketplace
-claude /plugin marketplace add https://github.com/YOUR_USERNAME/super-development-atlas
+claude /plugin marketplace add https://github.com/pntnone/super-development-atlas
 
 # Install Atlas
 claude /plugin install atlas
@@ -47,7 +47,7 @@ claude /plugin install atlas
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/super-development-atlas.git ~/.claude/atlas
+git clone https://github.com/pntnone/super-development-atlas.git ~/.claude/atlas
 ```
 
 2. Copy the skills to your Claude Code skills directory:
@@ -64,7 +64,7 @@ If you want Atlas only for a specific project:
 1. Clone into your project:
 ```bash
 cd your-project
-git clone https://github.com/YOUR_USERNAME/super-development-atlas.git .atlas-framework
+git clone https://github.com/pntnone/super-development-atlas.git .atlas-framework
 ```
 
 2. Add to your project's `.claude/settings.local.json`:
