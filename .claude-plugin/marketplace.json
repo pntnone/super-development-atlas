@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "atlas",
-      "source": ".",
+      "source": "./plugins/atlas",
       "description": "Divide & conquer development framework with isolated feature labs, contracts, and coding rules for managing large codebases."
     }
   ]

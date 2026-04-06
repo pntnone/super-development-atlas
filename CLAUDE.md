@@ -5,8 +5,9 @@ Atlas is a set of Claude Code skills that solve context bloat in large projects 
 ## Project Structure
 
 ```
-skills/          ← Claude Code skill definitions (SKILL.md files)
-templates/       ← Templates for contracts, rules, CLAUDE.md files
+plugins/atlas/skills/     ← Claude Code skill definitions (SKILL.md files)
+plugins/atlas/templates/  ← Templates for contracts, rules, CLAUDE.md files
+.claude-plugin/           ← Marketplace manifest for plugin distribution
 ```
 
 ## Skills
