@@ -134,7 +134,37 @@ payment-system/
     └── payment-hooks/         ← Developer C
 ```
 
-### 5. Merge Back
+### 5. Preview a Lab's UI in Isolation (Optional)
+
+Atlas includes a **shared Preview Harness** that lets you run any lab's UI in isolation — without copying app scaffolding, theme providers, or navigation. The harness lives in the labs repo and is shared across all labs.
+
+Initialize the harness once per project:
+
+```
+You: /atlas-lab-preview-setup
+```
+
+Atlas will:
+- Detect your tech stack (React Native, Flutter, SwiftUI, Jetpack Compose, etc.)
+- Set up shared providers (theme, navigation, state)
+- Generate mock implementations for every contract
+- Create the harness at `{labs-repo}/.atlas-harness/`
+
+Then preview any lab:
+
+```
+You: /atlas-lab-preview payment-system
+```
+
+Atlas will:
+- Generate the lab's `preview.config.json` (if missing)
+- Wire up contract mocks (with optional overrides)
+- Mount the lab's UI inside the shared harness
+- Launch the preview (or show IDE instructions)
+
+This means **no duplicated app shells** — every lab uses the same providers, theme, and navigation, but Claude only sees the lab's own code.
+
+### 6. Merge Back
 
 ```bash
 # Return to main project
@@ -167,6 +197,8 @@ Atlas will:
 | `/atlas-contract list` | List all contracts |
 | `/atlas-contract edit {name}` | Edit an existing contract |
 | `/atlas-contract remove {name}` | Remove a contract |
+| `/atlas-lab-preview-setup` | Initialize the shared UI preview harness in the labs repo |
+| `/atlas-lab-preview {name}` | Mount and run a lab's UI in the shared preview harness |
 | `/atlas-rules` | Show all active coding rules |
 | `/atlas-rules add` | Add a custom coding rule |
 | `/atlas-rules suggest` | Claude suggests rules based on codebase analysis |
